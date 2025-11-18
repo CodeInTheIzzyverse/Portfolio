@@ -1,0 +1,41 @@
+@use "@/styles/vars.scss" as *;
+
+header {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	background: $bg;
+	background: -webkit-linear-gradient(
+		to bottom,
+		$bg,
+		rgba(0, 0, 0, 0)
+	);
+	background: linear-gradient(
+		to bottom,
+		$bg,
+		rgba(0, 0, 0, 0)
+	);
+
+	nav {
+		width: 90%;
+		max-width: 50rem;
+		margin: 0 auto;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+
+		img {
+			width: 2rem;
+		}
+
+		& > div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 1rem;
+			background-color: #1c1c1c;
+			color: #fff;
+		}
+	}
+}

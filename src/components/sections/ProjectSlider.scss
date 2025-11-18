@@ -1,0 +1,83 @@
+@use "@/styles/vars.scss" as *;
+
+.projects-slider {
+    padding-top: 3rem;
+    height: 60vh;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    .container{
+        display: grid;
+        grid-template-columns: 25% 50% 25%;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        height: 45vh;
+
+        .project-info{
+            .skills-grid{
+                display: grid;
+                grid-template-columns: repeat(auto-fit, 3rem);
+                gap: 1rem;
+
+                img {
+                    width: 2rem;
+                    height: 2rem;
+                }
+            }
+        }
+
+        .project-console{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+
+            .project-slider{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                width: 100%;
+
+                .project-image{
+                    max-width: 25rem;
+                    object-fit: cover;
+                }
+            }
+
+            .actions{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+            }
+        }
+
+        .other-projects{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            height: 45vh;
+            overflow-y: auto;
+            padding-right: 1rem;
+            scrollbar-color: $primary $bg;
+
+            img {
+                cursor: pointer;
+            }
+
+            .active, img:hover {
+                filter: brightness(0.5);
+            }
+        }
+    }
+}

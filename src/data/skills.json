@@ -1,0 +1,98 @@
+{
+    "learned": [
+        {
+            "name": "HTML",
+            "categories": ["Frontend"]
+        },
+        {
+            "name": "CSS",
+            "categories": ["Frontend"]
+        },
+        {
+            "name": "Sass",
+            "categories": ["Frontend"]
+        },
+        {
+            "name": "JavaScript",
+            "categories": ["Frontend"]
+        },
+        {
+            "name": "TypeScript",
+            "categories": ["Frontend", "Backend"]
+        },
+        {
+            "name": "React",
+            "categories": ["Frontend"]
+        },
+        {
+            "name": "Node JS",
+            "categories": ["Backend"]
+        },
+        {
+            "name": "Express JS",
+            "categories": ["Backend"]
+        },
+        {
+            "name": "MongoDB",
+            "categories": ["Database"]
+        },
+        {
+            "name": "PostgreSQL",
+            "categories": ["Database"]
+        },
+        {
+            "name": "Supabase",
+            "categories": ["Database", "Backend"]
+        },
+        {
+            "name": "Git",
+            "categories": ["Other"]
+        },
+        {
+            "name": "GitHub",
+            "categories": ["Other"]
+        },
+        {
+            "name": "Figma",
+            "categories": ["Other"]
+        },
+        {
+            "name": "Python",
+            "categories": ["Backend"]
+        },
+        {
+            "name": "Streamlit",
+            "categories": ["Frontend"]
+        },
+        {
+            "name": "Fillout",
+            "categories": ["Other"]
+        },
+        {
+            "name": "Airtable",
+            "categories": ["Other"]
+        },
+        {
+            "name": "Power BI",
+            "categories": ["Other"]
+        }
+    ],
+    "learning": [
+        {
+            "name": "N8N",
+            "categories": ["Other"]
+        },
+        {
+            "name": "C#",
+            "categories": ["Backend", "Videogames / AR / VR"]
+        },
+        {
+            "name": "Unity",
+            "categories": ["Videogames / AR / VR"]
+        },
+        {
+            "name": "Blender",
+            "categories": ["Videogames / AR / VR"]
+        }
+    ]
+}

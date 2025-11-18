@@ -1,0 +1,68 @@
+@use "@/styles/vars.scss" as *;
+
+.education-card {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 35rem;
+	height: 5.5rem;
+	padding: 1rem;
+	transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+	&:hover {
+		width: 35.5rem;
+		height: 6rem;
+	}
+
+    .image{
+        object-fit: contain;
+    }
+
+	.content {
+		width: 100%;
+		justify-self: start;
+		padding: 0;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+
+		.title {
+			display: block;
+			overflow: hidden;
+			position: relative;
+			height: 1.2em;
+            cursor: pointer;
+
+			.marquee-wrap {
+				overflow: hidden;
+			}
+
+			.marquee {
+                display: inline-block;
+                white-space: nowrap;
+                will-change: transform;
+                animation-play-state: paused;
+            }
+
+			.marquee__inner {
+				display: inline-block;
+				padding-right: 8rem;
+			}
+		}
+	}
+
+	.date {
+		font-size: 0.8rem;
+	}
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(calc(-1 * var(--marquee-distance, 0px)));
+	}
+}

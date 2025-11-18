@@ -1,0 +1,42 @@
+{
+    "career": [
+        {
+            "id": 0,
+            "title": "Systems Engineering",
+            "institution": "Universidad de Antioquia",
+            "date": "Feb2022-Nov2027"
+        }
+    ],
+    "courses": [
+        {
+            "id": 1,
+            "title": "Programming Concepts",
+            "institution": "Open Bootcamp",
+            "date": "Sep2023"
+        },
+        {
+            "id": 2,
+            "title": "HTML & CSS",
+            "institution": "Open Bootcamp",
+            "date": "Sep2023"
+        },
+        {
+            "id": 3,
+            "title": "Artificial Intelligence for Engineering and Science",
+            "institution": "Universidad de Antioquia",
+            "date": "Jun2025"
+        },
+        {
+            "id": 4,
+            "title": "Virtual and Augmented Reality Level 1",
+            "institution": "Ubicua",
+            "date": "Mar2022"
+        },
+        {
+            "id": 5,
+            "title": "Introduction to Cybersecurity",
+            "institution": "CISCO",
+            "date": "Oct2025"
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+@use "@/styles/vars.scss" as *;
+
+.skill{
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.learning {
+        background-color: $secondary;
+        border-radius: 50%;
+    }
+    
+    img {
+        width: 4.2rem;
+        height: 4.2rem;
+        object-fit: cover;
+        object-position: center;
+    }
+}
