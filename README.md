@@ -4,6 +4,8 @@
 
 ![Image](https://example.com/image.png)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b90ea69a-aee2-4638-b254-a485907e6903/deploy-status)](https://app.netlify.com/projects/isabedoya/deploys)
+
 ## Built With
 
 This project was built with the following tools:
