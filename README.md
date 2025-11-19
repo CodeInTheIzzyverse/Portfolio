@@ -1,5 +1,5 @@
 <h1 align="center">
-	Portfolio Website - v1.0<br>
+	Portfolio Website - v2.0<br>
 	<a align="center" href="https://isabedoya.netlify.app/" target="_blank">isabedoya.portfolio</a>
 </h1>
 
