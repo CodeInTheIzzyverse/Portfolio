@@ -1,6 +1,7 @@
-# Portfolio Website - v1.0
-
-[View Here](https://example.com)
+<h1 align="center">
+	Portfolio Website - v1.0<br>
+	<a align="center" href="https://isabedoya.netlify.app/" target="_blank">isabedoya.portfolio</a>
+</h1>
 
 ![Demo](./images/readme_img1.png)
 
