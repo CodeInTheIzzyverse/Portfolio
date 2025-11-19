@@ -14,52 +14,58 @@ exports.handler = async (event, context) => {
         };
     }
 
-	if (event.httpMethod !== "POST") {
-		return {
-			statusCode: 405,
-			body: JSON.stringify({ message: "Method not permitted" }),
-		};
-	}
+    try {
+        emailjs.init({
+            publicKey: publicKey,
+            privateKey: privateKey,
+        });
+    } catch (e) {
+        console.error("Error initializing EmailJS:", e);
+    }
+    
+    if (event.httpMethod !== "POST") {
+        return {
+            statusCode: 405,
+            body: JSON.stringify({ message: "Method not permitted" }),
+        };
+    }
 
-	try {
-		const data = JSON.parse(event.body);
+    try {
+        const data = JSON.parse(event.body);
 
-		if (!data.name || !data.email || !data.message) {
+        if (!data.name || !data.email || !data.message) {
 			return {
 				statusCode: 400,
 				body: JSON.stringify({ message: "Incomplete form data" }),
 			};
 		}
 
-		const templateParams = {
+        const templateParams = {
 			name: data.name,
 			email: data.email,
 			message: data.message,
 		};
 
-		const result = await emailjs.send(
-			serviceId,
-			templateId,
-			templateParams,
-			{
-				privateKey: privateKey,
-                publicKey: publicKey
-			}
-		);
+        
+        const result = await emailjs.send(
+            serviceId,
+            templateId,
+            templateParams
+        );
 
-		console.log("Email sent:", result.status, result.text);
+        console.log("Email sent:", result.status, result.text);
 
-		return {
-			statusCode: 200,
-			body: JSON.stringify({ message: "CEmail sent successfully" }),
-		};
-	} catch (error) {
-		console.error("Error sending email:", error);
-		return {
-			statusCode: 500,
-			body: JSON.stringify({
-				message: "Internal server error while sending email",
-			}),
-		};
-	}
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ message: "Email sent successfully" }),
+        };
+    } catch (error) {
+        console.error("Error sending email:", error);
+        return {
+            statusCode: 500,
+            body: JSON.stringify({
+                message: "Internal server error while sending email",
+            }),
+        };
+    }
 };
