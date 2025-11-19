@@ -1,10 +1,33 @@
 const emailjs = require("@emailjs/nodejs");
 
+let emailInitialized = false;
+
 exports.handler = async (event, context) => {
 	const serviceId = process.env.EMAILJS_SERVICE_ID;
 	const templateId = process.env.EMAILJS_TEMPLATE_ID;
 	const publicKey = process.env.EMAILJS_PUBLIC_KEY;
 	const privateKey = process.env.EMAILJS_PRIVATE_KEY;
+
+	if (!emailInitialized) {
+		try {
+			emailjs.init({
+				publicKey: publicKey,
+				privateKey: privateKey,
+				limitRate: {
+					id: serviceId,
+					throttle: 10000,
+				},
+				blockHeadless: true,
+			})
+			emailInitialized = true;
+		} catch (e) {
+			console.error("Error initializing EmailJS with Rate Limit:", e);
+			return {
+                statusCode: 500,
+                body: JSON.stringify({ message: 'Email service initialization failed.' }),
+            };
+		}
+	}
 
 	if (!serviceId || !templateId || !privateKey || !publicKey) {
 		console.error(
@@ -44,11 +67,7 @@ exports.handler = async (event, context) => {
 		const result = await emailjs.send(
             serviceId,
             templateId,
-            templateParams,
-            {
-                privateKey: privateKey, 
-                publicKey: publicKey
-            }
+            templateParams
         );
 
 		console.log("Email sent:", result.status, result.text);
@@ -59,6 +78,14 @@ exports.handler = async (event, context) => {
 		};
 	} catch (error) {
 		console.error("Error sending email:", error);
+
+		if (error.statusCode === 429) {
+			return {
+				statusCode: 429,
+				body: JSON.stringify({ message: "Too many requests. Please try again later." }),
+			};
+		}
+
 		return {
 			statusCode: 500,
 			body: JSON.stringify({

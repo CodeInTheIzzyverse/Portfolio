@@ -1,7 +1,5 @@
-
-import { HugeiconsIcon } from "@hugeicons/react";
-import { Cancel01Icon } from "@hugeicons/core-free-icons";
 import "./ViewerPDF.scss"
+import Close from "./Close";
 
 function ViewerPDF({ url, close }: { url: string, close: () => void }) {
     if (!url) return null;
@@ -10,7 +8,7 @@ function ViewerPDF({ url, close }: { url: string, close: () => void }) {
         <>
             <div className="viewer-bg" onClick={close}></div>
             <div className="pdf-viewer">
-                <HugeiconsIcon icon={Cancel01Icon} onClick={close} className="close-btn" />
+                <Close onClick={close} className="close-btn" />
                 <iframe src={url} title="pdf" />
             </div>
         </>

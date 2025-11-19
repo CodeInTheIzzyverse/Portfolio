@@ -2,7 +2,8 @@ import type EducationModel from "@/models/Education";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/pixelact-ui/card";
 import { Avatar, AvatarImage } from "@/components/ui/pixelact-ui/avatar";
 import "./EducationCard.scss"
-import { useEffect, useRef, useState } from "react";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/pixelact-ui/alert";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 // utils
 import { getAssets, normalizeName } from "@/utils/assetsHelper";
@@ -16,6 +17,17 @@ function EducationCard({ educationItem }: { educationItem: EducationModel }) {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const cardRef = useRef<HTMLDivElement | null>(null);
     const [isOpen, setIsOpen] = useState(false);
+    const [alertIsOpen, setAlertIsOpen] = useState<boolean | null>(null);
+
+    useEffect(() => {
+        if (alertIsOpen !== null) {
+            const timer = setTimeout(() => {
+                setAlertIsOpen(null);
+            }, 3000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [alertIsOpen]);
 
     useEffect(() => {
         const update = () => {
@@ -74,12 +86,15 @@ function EducationCard({ educationItem }: { educationItem: EducationModel }) {
 
     const iconUrl = icons[normalizeName(educationItem.institution)] ?? '';
     const certificateUrl = certificates[educationItem.id.toString()] ?? certificates[educationItem.id.toString() + '.pdf'] ?? '';
+    const { hasCertificate } = useMemo(() => {
+        return { hasCertificate: certificateUrl !== '' };
+    }, [certificateUrl]);
 
     return (
         <>
             <Card
                 className="education-card"
-                onClick={() => setIsOpen(true)}
+                onClick={() => {setIsOpen(true); if (!hasCertificate) setAlertIsOpen(true);}}
                 ref={cardRef}
                 onMouseLeave={handleMouseLeave}
                 onMouseEnter={handleMouseEnter}
@@ -103,7 +118,15 @@ function EducationCard({ educationItem }: { educationItem: EducationModel }) {
                 </CardContent>
 
             </Card>
-            {isOpen && <ViewerPDF url={certificateUrl} close={() => setIsOpen(false)} />}
+            {isOpen && hasCertificate && <ViewerPDF url={certificateUrl} close={() => setIsOpen(false)} />}
+            {isOpen && !hasCertificate && alertIsOpen && (
+                <div className="alert">
+                    <Alert variant="default">
+                        <AlertTitle>Certificate not found</AlertTitle>
+                        <AlertDescription>There is no certificate yet.</AlertDescription>
+                    </Alert>
+                </div>
+            )}
         </>
     );
 }

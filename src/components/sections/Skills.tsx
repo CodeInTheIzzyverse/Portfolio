@@ -13,7 +13,7 @@ function Skills() {
                 <div className="badge"><div className="circle"></div> Currently learning</div>
             </article>
             <article className="categories">
-                <Accordion type="single" collapsible>
+                <Accordion type="single" collapsible defaultValue="item-0">
                     {categories.map((category, i) => (
                         <SkillSlider key={i} category={category} index={i} />
                     ))}

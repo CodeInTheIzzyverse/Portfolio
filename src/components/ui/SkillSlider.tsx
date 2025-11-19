@@ -3,11 +3,10 @@ import Skills from "@/data/skills.json";
 import type SkillModel from "@/models/Skill";
 import Skill from "./Skill";
 import { AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/pixelact-ui/accordion";
-import { HugeiconsIcon } from '@hugeicons/react';
-import { ArrowLeft01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons';
 import "./SkillSlider.scss";
+import Arrow from "./Arrow";
 
-const ITEMS_PER_PAGE = 8;
+const ITEMS_PER_PAGE = 7;
 
 function SkillSlider({ category, index }: { category: string, index: number }) {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -59,7 +58,7 @@ function SkillSlider({ category, index }: { category: string, index: number }) {
                             disabled={!hasMoreLeft}
                             aria-label="Previous skills"
                         >
-                            <HugeiconsIcon icon={ArrowLeft01Icon} />
+                            <Arrow direction="left" />
                         </button>
                     )}
                     <div className="skills-items">
@@ -74,7 +73,7 @@ function SkillSlider({ category, index }: { category: string, index: number }) {
                             disabled={!hasMoreRight}
                             aria-label="Next skills"
                         >
-                            <HugeiconsIcon icon={ArrowRight01Icon} />
+                            <Arrow direction="right" />
                         </button>
                     )}
                 </div>

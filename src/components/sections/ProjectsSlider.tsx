@@ -1,6 +1,4 @@
 import { Button } from "@/components/ui/pixelact-ui/button";
-import { HugeiconsIcon } from '@hugeicons/react';
-import { ArrowLeft01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons';
 import "./ProjectSlider.scss"
 import { useMemo, useState } from "react";
 import type ProjectModel from "@/models/Project";
@@ -8,6 +6,7 @@ import Projects from "@/data/projects.json";
 import Skill from "../ui/Skill";
 
 import { getAssets, normalizeName } from "@/utils/assetsHelper";
+import Arrow from "../ui/Arrow";
 
 const images = getAssets('projects/images');
 const miniatures = getAssets('projects/miniatures');
@@ -23,9 +22,9 @@ function ProjectsSlider() {
             projects
         };
     }, []);
-    
+
     const hanglePrevious = () => {
-        if(currentIndex - 1 >= 0) {
+        if (currentIndex - 1 >= 0) {
             setCurrentIndex(prev => prev - 1);
         } else {
             setCurrentIndex(projects.length - 1);
@@ -33,7 +32,7 @@ function ProjectsSlider() {
     };
 
     const handleNext = () => {
-        if(currentIndex + 1 < projects.length) {
+        if (currentIndex + 1 < projects.length) {
             setCurrentIndex(prev => prev + 1);
         } else {
             setCurrentIndex(0);
@@ -69,9 +68,9 @@ function ProjectsSlider() {
                 </div>
                 <div className="project-console">
                     <div className="project-slider">
-                        <HugeiconsIcon icon={ArrowLeft01Icon} onClick={hanglePrevious} />
+                        <Arrow direction="left" onClick={hanglePrevious} />
                         <img src={image} alt={project.name} className="project-image" />
-                        <HugeiconsIcon icon={ArrowRight01Icon} onClick={handleNext} />
+                        <Arrow direction="right" onClick={handleNext}/>
                     </div>
                     <div className="actions">
                         <Button className="btn" variant="default"><a href={project.url} target="_blank" rel="noreferrer">Start</a></Button>

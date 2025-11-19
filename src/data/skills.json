@@ -75,6 +75,10 @@
         {
             "name": "Power BI",
             "categories": ["Other"]
+        },
+        {
+            "name": "Postman",
+            "categories": ["Other"]
         }
     ],
     "learning": [
