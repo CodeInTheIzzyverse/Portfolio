@@ -45,7 +45,7 @@ function Contact() {
                 }
 
                 if (!response.ok) {
-                    const errorBody = await response.json(); // Leer el cuerpo de error si no es 429
+                    const errorBody = await response.json();
                     throw new Error(errorBody.message || `HTTP error! status: ${response.status}`);
                 }
 
@@ -53,14 +53,13 @@ function Contact() {
             })
             .then(data => {
                 console.log('SUCCESS!', data.message);
+                reset();
                 setSuccess(true);
             })
             .catch((error) => {
                 console.log('FAILED...', error);
                 setSuccess(false);
             });
-
-        reset();
     };
 
     return (
