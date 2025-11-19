@@ -5,30 +5,36 @@ import { Textarea } from "@/components/ui/pixelact-ui/textarea";
 import { Button } from "@/components/ui/pixelact-ui/button";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/pixelact-ui/alert";
 import { useRef } from "react";
-import emailjs from "@emailjs/browser";
 
 function Contact() {
     const form = useRef<HTMLFormElement | null>(null);
-    const serviceId = import.meta.env.VITE_SERVICE_ID;
-    const templateId = import.meta.env.VITE_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_PUBLIC_KEY;
-
+    
     const sendEmail = (e : React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!form.current) return;
 
-        emailjs
-            .sendForm(serviceId, templateId, form.current as HTMLFormElement, {
-                publicKey: publicKey,
-            })
-            .then(
-                () => {
-                    console.log('SUCCESS!');
-                },
-                (error) => {
-                    console.log('FAILED...', error.text);
-                },
-            );
+        const formData = new FormData(form.current);
+        const data = Object.fromEntries(formData.entries());
+
+        fetch("/.netlify/functions/sendEmail", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('SUCCESS!', data.message);
+        })
+        .catch((error) => {
+            console.log('FAILED...', error);
+        });
     };
 
     return (
