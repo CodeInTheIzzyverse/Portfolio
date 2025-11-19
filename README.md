@@ -2,7 +2,7 @@
 
 [View Here](https://example.com)
 
-![Image](https://example.com/image.png)
+![Demo](./images/readme_img1.png)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b90ea69a-aee2-4638-b254-a485907e6903/deploy-status)](https://app.netlify.com/projects/isabedoya/deploys)
 

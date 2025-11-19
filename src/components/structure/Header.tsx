@@ -1,5 +1,4 @@
 import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/ui/pixelact-ui/menubar";
-import { Link } from "react-router-dom";
 import { HashLink } from 'react-router-hash-link';
 import Logo from "@/assets/logo/Isotipo.png";
 import "./Header.scss";
@@ -9,9 +8,7 @@ function Header() {
         <header className="header">
             <nav className="nav">
                 <Menubar>
-                    <Link to="/">
-                        <img src={Logo} alt="logo" />
-                    </Link>
+                    <HashLink to="/#about"><img src={Logo} alt="logo" /></HashLink>
                     <MenubarMenu>
                         <MenubarTrigger>
                             <HashLink to="/#about">About</HashLink>
